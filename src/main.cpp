@@ -6,6 +6,7 @@
 /*    Description:  V5 project                                                */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
+// docs https://api.vex.com/v5/home/cpp/
 
 #include "vex.h"
 #include <vector>
@@ -36,7 +37,13 @@ void usercontrol(void)
   {
     InputVector = {
         Controller1.Axis1.position(),
-        Controller3.Axis1.position()};
+        Controller1.Axis3.position()};
+
+    Drivetrain.setDriveVelocity(InputVector[1], percent);
+    Drivetrain.setTurnVelocity(InputVector[0], percent);
+
+    Drivetrain.drive(fwd);
+    Drivetrain.turn(right);
     wait(20, msec);
   }
 }
